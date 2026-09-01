@@ -1312,13 +1312,6 @@
       opacity: 0.7;
     }
 
-    .resume-actions-top {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
     .resume-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1326,16 +1319,21 @@
     }
 
     .resume-card {
-      padding: 24px;
+      padding: 28px;
       border-radius: 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 18px;
+      gap: 24px;
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .resume-card:hover {
+      border-color: rgba(255, 72, 72, 0.45);
+      box-shadow: 0 16px 40px rgba(255, 45, 85, 0.18);
     }
 
     .resume-card::before {
@@ -1350,19 +1348,36 @@
       pointer-events: none;
     }
 
-    .resume-card-header {
+    .resume-doc-top {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      gap: 20px;
+      align-items: flex-start;
     }
 
-    .resume-page-meta {
+    .resume-doc-icon {
+      width: 54px;
+      height: 54px;
+      min-width: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255, 45, 85, 0.22), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 72, 72, 0.35);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      color: var(--primary);
+      box-shadow: var(--shadow-red);
+    }
+
+    .resume-doc-content {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
+    }
+
+    .resume-doc-content h3 {
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      margin: 2px 0 6px;
     }
 
     .resume-badge {
@@ -1377,194 +1392,21 @@
       letter-spacing: 0.08em;
     }
 
-    .resume-subtitle {
-      color: var(--muted-soft);
-      font-size: 0.74rem;
-    }
-
-    .resume-card-quick-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--muted);
-      font-size: 0.82rem;
-      transition: all var(--ease);
-    }
-
-    .btn-icon:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(244, 63, 94, 0.35);
-    }
-
-    .resume-sheet-wrap {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .resume-sheet-link {
-      display: block;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .resume-sheet-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .resume-sheet-link:hover .resume-sheet-img {
-      transform: scale(1.02);
-    }
-
-    .resume-hover-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(5, 5, 5, 0.75) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      backdrop-filter: blur(2px);
-    }
-
-    .resume-sheet-link:hover .resume-hover-overlay {
-      opacity: 1;
-    }
-
     .resume-card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 14px;
       flex-wrap: wrap;
-      padding-top: 12px;
+      padding-top: 16px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    /* Modal / Lightbox Styles */
-    .resume-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .resume-modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .resume-modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(3, 3, 4, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    .resume-modal-content {
-      position: relative;
-      z-index: 2;
-      width: min(900px, 94vw);
-      max-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      background: rgba(14, 14, 18, 0.94);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 24px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(244, 63, 94, 0.15);
-      overflow: hidden;
-      transform: scale(0.95);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .resume-modal.active .resume-modal-content {
-      transform: scale(1);
-    }
-
-    .resume-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 22px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(8, 8, 10, 0.7);
-    }
-
-    .resume-modal-title {
-      font-size: 0.86rem;
-      color: #ffd5dd;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-
-    .resume-modal-actions {
+    .resume-card-actions {
       display: flex;
       align-items: center;
       gap: 10px;
-    }
-
-    .resume-modal-close {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all var(--ease);
-    }
-
-    .resume-modal-close:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      transform: rotate(90deg);
-    }
-
-    .resume-modal-body {
-      overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.4);
-    }
-
-    .resume-modal-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-      background: #ffffff;
+      flex-wrap: wrap;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1749,7 +1591,7 @@
       </ul>
 
       <div class="nav-actions">
-        <a href="#resume" class="btn btn-secondary" id="navResumeBtn" title="View Resume">
+        <a href="GEN-CV_HR_page-0001.jpg" class="btn btn-secondary" id="navResumeBtn" target="_blank" rel="noopener noreferrer" title="Open Resume (Page 1)">
           <i class="fa-regular fa-file-pdf"></i> Resume
         </a>
         <a href="#contact" class="btn btn-primary">Hire Me</a>
@@ -1787,7 +1629,7 @@
               <i class="fa-solid fa-layer-group"></i>
               View Projects
             </a>
-            <a href="#resume" class="btn btn-secondary" id="heroResumeBtn" title="View Resume">
+            <a href="GEN-CV_HR_page-0001.jpg" class="btn btn-secondary" id="heroResumeBtn" target="_blank" rel="noopener noreferrer" title="Open Resume (Page 1)">
               <i class="fa-regular fa-file-pdf"></i>
               View Resume
             </a>
@@ -2189,98 +2031,67 @@
       </div>
       <h2 class="section-title reveal">Resume &amp; Professional Background</h2>
       <p class="section-text reveal">
-        A serial, comprehensive two-page overview of technical capabilities, full stack architectures, hackathon achievements, and academic credentials.
+        Directly access, view in high definition, or download the complete two-page curriculum vitae.
       </p>
-
-      <div class="resume-actions-top reveal" style="margin-top: 24px;">
-        <a href="GEN-CV_HR_page-0001.jpg" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Page 1 (HD)
-        </a>
-        <a href="GEN-CV_HR_page-0002.jpg" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Page 2 (HD)
-        </a>
-        <a href="GEN-CV_HR_page-0001.jpg" download="Md_Mahmudur_Rahman_Hridoy_CV_Page1.jpg" class="btn btn-secondary btn-sm">
-          <i class="fa-solid fa-download"></i> Download Page 1
-        </a>
-        <a href="GEN-CV_HR_page-0002.jpg" download="Md_Mahmudur_Rahman_Hridoy_CV_Page2.jpg" class="btn btn-secondary btn-sm">
-          <i class="fa-solid fa-download"></i> Download Page 2
-        </a>
-      </div>
 
       <div class="resume-grid" style="margin-top: 34px;">
         <!-- Resume Page 1 -->
         <article class="resume-card glass-card reveal">
-          <div class="resume-card-header">
-            <div class="resume-page-meta">
-              <span class="resume-badge"><i class="fa-regular fa-file-lines"></i> Page 01 of 02</span>
-              <span class="resume-subtitle mono">Skills &bull; Key Projects &bull; Architecture</span>
+          <div class="resume-doc-top">
+            <div class="resume-doc-icon">
+              <i class="fa-regular fa-file-lines"></i>
             </div>
-            <div class="resume-card-quick-actions">
-              <a href="GEN-CV_HR_page-0001.jpg" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Open Full Resolution Page 1">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-              <a href="GEN-CV_HR_page-0001.jpg" download="Md_Mahmudur_Rahman_Hridoy_CV_Page1.jpg" class="btn-icon" title="Download Page 1">
-                <i class="fa-solid fa-download"></i>
-              </a>
+            <div class="resume-doc-content">
+              <span class="resume-badge">Page 01 of 02</span>
+              <h3>Profile, Skills &amp; Projects</h3>
+              <p class="muted">Technical stack (Python, JS, React, Node.js, SQL), Supabase architecture, and core project portfolio.</p>
             </div>
           </div>
           
-          <div class="resume-sheet-wrap">
-            <a href="GEN-CV_HR_page-0001.jpg" class="resume-sheet-link resume-preview-trigger" data-page="1" data-src="GEN-CV_HR_page-0001.jpg" data-title="Md Mahmudur Rahman Hridoy — CV Page 1 of 2 (Skills &amp; Projects)" title="Click to expand Page 1">
-              <img src="GEN-CV_HR_page-0001.jpg" alt="Md Mahmudur Rahman Hridoy - CV Page 1 (Skills &amp; Projects)" class="resume-sheet-img" loading="lazy">
-              <div class="resume-hover-overlay">
-                <span class="cert-view-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> View Page 1 Fullscreen</span>
-              </div>
-            </a>
-          </div>
-
           <div class="resume-card-footer">
             <div class="chip-list">
               <span class="chip">Full Stack Stack</span>
-              <span class="chip">Healthcare App</span>
-              <span class="chip">FinTech Anti-Fraud</span>
+              <span class="chip">Key Projects</span>
+              <span class="chip">Core Stack</span>
             </div>
-            <a href="GEN-CV_HR_page-0001.jpg" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
-              <i class="fa-regular fa-eye"></i> View Page 1
-            </a>
+            <div class="resume-card-actions">
+              <a href="GEN-CV_HR_page-0001.jpg" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Page 1 (HD)
+              </a>
+              <a href="GEN-CV_HR_page-0001.jpg" download="Md_Mahmudur_Rahman_Hridoy_CV_Page1.jpg" class="btn btn-secondary btn-sm" title="Download Page 1">
+                <i class="fa-solid fa-download"></i> Download
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Resume Page 2 -->
         <article class="resume-card glass-card reveal">
-          <div class="resume-card-header">
-            <div class="resume-page-meta">
-              <span class="resume-badge"><i class="fa-regular fa-file-lines"></i> Page 02 of 02</span>
-              <span class="resume-subtitle mono">Hackathons &bull; Certificates &bull; Education</span>
+          <div class="resume-doc-top">
+            <div class="resume-doc-icon">
+              <i class="fa-regular fa-file-lines"></i>
             </div>
-            <div class="resume-card-quick-actions">
-              <a href="GEN-CV_HR_page-0002.jpg" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Open Full Resolution Page 2">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-              <a href="GEN-CV_HR_page-0002.jpg" download="Md_Mahmudur_Rahman_Hridoy_CV_Page2.jpg" class="btn-icon" title="Download Page 2">
-                <i class="fa-solid fa-download"></i>
-              </a>
+            <div class="resume-doc-content">
+              <span class="resume-badge">Page 02 of 02</span>
+              <h3>Hackathons, Credentials &amp; Education</h3>
+              <p class="muted">Code-A-Haunt 3.0, GeekVerse, Infosys Cybersecurity certification, and academic foundation at LPU.</p>
             </div>
-          </div>
-          
-          <div class="resume-sheet-wrap">
-            <a href="GEN-CV_HR_page-0002.jpg" class="resume-sheet-link resume-preview-trigger" data-page="2" data-src="GEN-CV_HR_page-0002.jpg" data-title="Md Mahmudur Rahman Hridoy — CV Page 2 of 2 (Hackathons, Certifications &amp; Education)" title="Click to expand Page 2">
-              <img src="GEN-CV_HR_page-0002.jpg" alt="Md Mahmudur Rahman Hridoy - CV Page 2 (Hackathons, Certifications &amp; Education)" class="resume-sheet-img" loading="lazy">
-              <div class="resume-hover-overlay">
-                <span class="cert-view-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> View Page 2 Fullscreen</span>
-              </div>
-            </a>
           </div>
 
           <div class="resume-card-footer">
             <div class="chip-list">
               <span class="chip">Hackathon Awards</span>
-              <span class="chip">Verified Certifications</span>
+              <span class="chip">Certifications</span>
               <span class="chip">B.Tech LPU</span>
             </div>
-            <a href="GEN-CV_HR_page-0002.jpg" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
-              <i class="fa-regular fa-eye"></i> View Page 2
-            </a>
+            <div class="resume-card-actions">
+              <a href="GEN-CV_HR_page-0002.jpg" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Page 2 (HD)
+              </a>
+              <a href="GEN-CV_HR_page-0002.jpg" download="Md_Mahmudur_Rahman_Hridoy_CV_Page2.jpg" class="btn btn-secondary btn-sm" title="Download Page 2">
+                <i class="fa-solid fa-download"></i> Download
+              </a>
+            </div>
           </div>
         </article>
       </div>
@@ -2364,30 +2175,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Resume Preview Modal / Lightbox -->
-  <div class="resume-modal" id="resumeModal" aria-hidden="true" role="dialog" aria-label="Resume Fullscreen Preview">
-    <div class="resume-modal-backdrop" id="resumeModalBackdrop"></div>
-    <div class="resume-modal-content">
-      <div class="resume-modal-header">
-        <span class="resume-modal-title mono" id="resumeModalTitle">Resume Preview</span>
-        <div class="resume-modal-actions">
-          <a href="#" id="resumeModalOpenHd" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" title="Open High Resolution Image">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Raw HD
-          </a>
-          <a href="#" id="resumeModalDownload" download class="btn btn-primary btn-sm" title="Download Image">
-            <i class="fa-solid fa-download"></i> Download
-          </a>
-          <button class="resume-modal-close" id="resumeModalClose" aria-label="Close modal">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      </div>
-      <div class="resume-modal-body">
-        <img src="" alt="Resume full preview" id="resumeModalImg" class="resume-modal-img">
-      </div>
-    </div>
-  </div>
 
   <script>
     const menuToggle = document.getElementById("menuToggle");
@@ -2525,57 +2312,6 @@
           link.classList.toggle("active", match);
         }
       });
-    });
-
-    // Resume Modal / Lightbox Logic
-    const resumeModal = document.getElementById("resumeModal");
-    const resumeModalBackdrop = document.getElementById("resumeModalBackdrop");
-    const resumeModalClose = document.getElementById("resumeModalClose");
-    const resumeModalImg = document.getElementById("resumeModalImg");
-    const resumeModalTitle = document.getElementById("resumeModalTitle");
-    const resumeModalOpenHd = document.getElementById("resumeModalOpenHd");
-    const resumeModalDownload = document.getElementById("resumeModalDownload");
-    const resumeTriggers = document.querySelectorAll(".resume-preview-trigger");
-
-    function openResumeModal(src, title, pageNum) {
-      if (!resumeModal || !resumeModalImg) return;
-      resumeModalImg.src = src;
-      resumeModalImg.alt = title;
-      if (resumeModalTitle) resumeModalTitle.textContent = title;
-      if (resumeModalOpenHd) resumeModalOpenHd.href = src;
-      if (resumeModalDownload) {
-        resumeModalDownload.href = src;
-        resumeModalDownload.setAttribute("download", "Md_Mahmudur_Rahman_Hridoy_CV_Page" + pageNum + ".jpg");
-      }
-      resumeModal.classList.add("active");
-      resumeModal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeResumeModal() {
-      if (!resumeModal) return;
-      resumeModal.classList.remove("active");
-      resumeModal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
-
-    resumeTriggers.forEach((trigger) => {
-      trigger.addEventListener("click", (e) => {
-        e.preventDefault();
-        const src = trigger.getAttribute("data-src") || trigger.getAttribute("href");
-        const title = trigger.getAttribute("data-title") || "Resume Preview";
-        const pageNum = trigger.getAttribute("data-page") || "1";
-        openResumeModal(src, title, pageNum);
-      });
-    });
-
-    if (resumeModalClose) resumeModalClose.addEventListener("click", closeResumeModal);
-    if (resumeModalBackdrop) resumeModalBackdrop.addEventListener("click", closeResumeModal);
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && resumeModal && resumeModal.classList.contains("active")) {
-        closeResumeModal();
-      }
     });
 
     document.getElementById("contactForm").addEventListener("submit", (event) => {
